@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/william.stanistreet/Documents/Scala/play/play-template/conf/routes
-// @DATE:Fri Jan 05 14:39:49 GMT 2024
+// @DATE:Mon Jan 08 14:46:47 GMT 2024
 
 import play.api.mvc.Call
 
@@ -25,14 +25,53 @@ package controllers {
   
   }
 
-  // @LINE:5
+  // @LINE:3
+  class ReverseApplicationController(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:4
+    def createMatching(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "matching")
+    }
+  
+    // @LINE:7
+    def deleteMatching(id:String): Call = {
+      
+      Call("DELETE", _prefix + { _defaultPrefix } + "matching/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+    }
+  
+    // @LINE:5
+    def readMatching(id:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "matching/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+    }
+  
+    // @LINE:3
+    def index(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "api")
+    }
+  
+    // @LINE:6
+    def updateMatching(id:String): Call = {
+      
+      Call("PUT", _prefix + { _defaultPrefix } + "matching/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+    }
+  
+  }
+
+  // @LINE:10
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:5
+    // @LINE:10
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))

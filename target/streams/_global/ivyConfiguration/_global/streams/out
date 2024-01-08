@@ -1,1 +1,0 @@
-[0m[[0m[33mwarn[0m] [0m[0minsecure HTTP request is deprecated 'http://open.artefacts.tax.service.gov.uk/maven2'; switch to HTTPS or opt-in as ("HMRC-open-artefacts-maven2" at "http://open.artefacts.tax.service.gov.uk/maven2").withAllowInsecureProtocol(true)[0m

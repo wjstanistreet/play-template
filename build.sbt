@@ -19,3 +19,7 @@ libraryDependencies ++= Seq(
   "org.scalamock" %% "scalamock" % "5.2.0" % Test,
   "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
 )
+
+libraryDependencies += ws
+
+libraryDependencies += ("org.typelevel"                %% "cats-core"                 % "2.9.0")

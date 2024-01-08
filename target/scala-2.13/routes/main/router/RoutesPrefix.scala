@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/william.stanistreet/Documents/Scala/play/play-template/conf/routes
-// @DATE:Fri Jan 05 14:39:49 GMT 2024
+// @DATE:Mon Jan 08 14:46:47 GMT 2024
 
 
 package router {

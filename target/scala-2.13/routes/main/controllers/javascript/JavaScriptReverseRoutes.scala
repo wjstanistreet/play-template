@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/william.stanistreet/Documents/Scala/play/play-template/conf/routes
-// @DATE:Fri Jan 05 14:39:49 GMT 2024
+// @DATE:Mon Jan 08 14:46:47 GMT 2024
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -30,7 +30,67 @@ package controllers.javascript {
   
   }
 
-  // @LINE:5
+  // @LINE:3
+  class ReverseApplicationController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:4
+    def createMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.createMatching",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "matching"})
+        }
+      """
+    )
+  
+    // @LINE:7
+    def deleteMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.deleteMatching",
+      """
+        function(id0) {
+          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "matching/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:5
+    def readMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.readMatching",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "matching/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:3
+    def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.index",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "api"})
+        }
+      """
+    )
+  
+    // @LINE:6
+    def updateMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.updateMatching",
+      """
+        function(id0) {
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "matching/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:10
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -38,7 +98,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:5
+    // @LINE:10
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
