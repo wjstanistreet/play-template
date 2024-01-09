@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/william.stanistreet/Documents/Scala/play/play-template/conf/routes
-// @DATE:Mon Jan 08 14:46:47 GMT 2024
+// @DATE:Mon Jan 08 15:59:21 GMT 2024
 
 package router
 
@@ -45,10 +45,10 @@ class Routes(
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.index()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api""", """controllers.ApplicationController.index()"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """matching""", """controllers.ApplicationController.createMatching()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """matching/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.readMatching(id:String)"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """matching/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.updateMatching(id:String)"""),
-    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """matching/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.deleteMatching(id:String)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api""", """controllers.ApplicationController.create()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.read(id:String)"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.update(id:String)"""),
+    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.delete(id:String)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -94,72 +94,72 @@ class Routes(
   )
 
   // @LINE:4
-  private[this] lazy val controllers_ApplicationController_createMatching2_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("matching")))
+  private[this] lazy val controllers_ApplicationController_create2_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api")))
   )
-  private[this] lazy val controllers_ApplicationController_createMatching2_invoker = createInvoker(
-    ApplicationController_1.createMatching(),
+  private[this] lazy val controllers_ApplicationController_create2_invoker = createInvoker(
+    ApplicationController_1.create(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ApplicationController",
-      "createMatching",
+      "create",
       Nil,
       "POST",
-      this.prefix + """matching""",
+      this.prefix + """api""",
       """""",
       Seq()
     )
   )
 
   // @LINE:5
-  private[this] lazy val controllers_ApplicationController_readMatching3_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("matching/"), DynamicPart("id", """[^/]+""",true)))
+  private[this] lazy val controllers_ApplicationController_read3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_ApplicationController_readMatching3_invoker = createInvoker(
-    ApplicationController_1.readMatching(fakeValue[String]),
+  private[this] lazy val controllers_ApplicationController_read3_invoker = createInvoker(
+    ApplicationController_1.read(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ApplicationController",
-      "readMatching",
+      "read",
       Seq(classOf[String]),
       "GET",
-      this.prefix + """matching/""" + "$" + """id<[^/]+>""",
+      this.prefix + """api/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )
   )
 
   // @LINE:6
-  private[this] lazy val controllers_ApplicationController_updateMatching4_route = Route("PUT",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("matching/"), DynamicPart("id", """[^/]+""",true)))
+  private[this] lazy val controllers_ApplicationController_update4_route = Route("PUT",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_ApplicationController_updateMatching4_invoker = createInvoker(
-    ApplicationController_1.updateMatching(fakeValue[String]),
+  private[this] lazy val controllers_ApplicationController_update4_invoker = createInvoker(
+    ApplicationController_1.update(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ApplicationController",
-      "updateMatching",
+      "update",
       Seq(classOf[String]),
       "PUT",
-      this.prefix + """matching/""" + "$" + """id<[^/]+>""",
+      this.prefix + """api/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )
   )
 
   // @LINE:7
-  private[this] lazy val controllers_ApplicationController_deleteMatching5_route = Route("DELETE",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("matching/"), DynamicPart("id", """[^/]+""",true)))
+  private[this] lazy val controllers_ApplicationController_delete5_route = Route("DELETE",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("id", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_ApplicationController_deleteMatching5_invoker = createInvoker(
-    ApplicationController_1.deleteMatching(fakeValue[String]),
+  private[this] lazy val controllers_ApplicationController_delete5_invoker = createInvoker(
+    ApplicationController_1.delete(fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ApplicationController",
-      "deleteMatching",
+      "delete",
       Seq(classOf[String]),
       "DELETE",
-      this.prefix + """matching/""" + "$" + """id<[^/]+>""",
+      this.prefix + """api/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )
@@ -199,27 +199,27 @@ class Routes(
       }
   
     // @LINE:4
-    case controllers_ApplicationController_createMatching2_route(params@_) =>
+    case controllers_ApplicationController_create2_route(params@_) =>
       call { 
-        controllers_ApplicationController_createMatching2_invoker.call(ApplicationController_1.createMatching())
+        controllers_ApplicationController_create2_invoker.call(ApplicationController_1.create())
       }
   
     // @LINE:5
-    case controllers_ApplicationController_readMatching3_route(params@_) =>
+    case controllers_ApplicationController_read3_route(params@_) =>
       call(params.fromPath[String]("id", None)) { (id) =>
-        controllers_ApplicationController_readMatching3_invoker.call(ApplicationController_1.readMatching(id))
+        controllers_ApplicationController_read3_invoker.call(ApplicationController_1.read(id))
       }
   
     // @LINE:6
-    case controllers_ApplicationController_updateMatching4_route(params@_) =>
+    case controllers_ApplicationController_update4_route(params@_) =>
       call(params.fromPath[String]("id", None)) { (id) =>
-        controllers_ApplicationController_updateMatching4_invoker.call(ApplicationController_1.updateMatching(id))
+        controllers_ApplicationController_update4_invoker.call(ApplicationController_1.update(id))
       }
   
     // @LINE:7
-    case controllers_ApplicationController_deleteMatching5_route(params@_) =>
+    case controllers_ApplicationController_delete5_route(params@_) =>
       call(params.fromPath[String]("id", None)) { (id) =>
-        controllers_ApplicationController_deleteMatching5_invoker.call(ApplicationController_1.deleteMatching(id))
+        controllers_ApplicationController_delete5_invoker.call(ApplicationController_1.delete(id))
       }
   
     // @LINE:10

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/william.stanistreet/Documents/Scala/play/play-template/conf/routes
-// @DATE:Mon Jan 08 14:46:47 GMT 2024
+// @DATE:Mon Jan 08 15:59:21 GMT 2024
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -38,32 +38,42 @@ package controllers.javascript {
     }
 
   
+    // @LINE:5
+    def read: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.read",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "api/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
     // @LINE:4
-    def createMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ApplicationController.createMatching",
+    def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.create",
       """
         function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "matching"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "api"})
         }
       """
     )
   
     // @LINE:7
-    def deleteMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ApplicationController.deleteMatching",
+    def delete: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.delete",
       """
         function(id0) {
-          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "matching/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+          return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "api/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
         }
       """
     )
   
-    // @LINE:5
-    def readMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ApplicationController.readMatching",
+    // @LINE:6
+    def update: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.update",
       """
         function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "matching/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "api/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
         }
       """
     )
@@ -74,16 +84,6 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "api"})
-        }
-      """
-    )
-  
-    // @LINE:6
-    def updateMatching: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ApplicationController.updateMatching",
-      """
-        function(id0) {
-          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "matching/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
         }
       """
     )

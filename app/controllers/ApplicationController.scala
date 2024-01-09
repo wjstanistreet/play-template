@@ -12,9 +12,9 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   def index() = TODO
   // TODO creates a default page that allows the app to continue to run without needing to implement every page
 
-  def createMatching() = TODO
-  def readMatching(id: String) = TODO
-  def updateMatching(id: String) = TODO
-  def deleteMatching(id: String) = TODO
+  def create() = TODO
+  def read(id: String) = TODO
+  def update(id: String) = TODO
+  def delete(id: String) = TODO
 }
 
