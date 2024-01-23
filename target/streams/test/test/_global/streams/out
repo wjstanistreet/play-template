@@ -2,118 +2,7 @@
 [0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
 [0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
 [0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 2 initial tasks for 2 tests.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@77e4c80f, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31mcontrollers.ApplicationControllerSpec *** ABORTED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  java.lang.NoClassDefFoundError: Could not initialize class com.typesafe.sslconfig.ssl.FakeKeyStore$KeystoreSettings$[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.typesafe.sslconfig.ssl.FakeKeyStore$.generateKeyStore(FakeKeyStore.scala:71)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.x$1$lzycompute(SelfSigned.scala:24)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.x$1(SelfSigned.scala:23)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.sslContext$lzycompute(SelfSigned.scala:23)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.sslContext(SelfSigned.scala:23)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSignedSSLEngineProvider.sslContext(SelfSigned.scala:36)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.AkkaHttpServer.sslContext$lzycompute(AkkaHttpServer.scala:207)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.AkkaHttpServer.sslContext(AkkaHttpServer.scala:206)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.AkkaHttpServer.$anonfun$httpsServerBinding$1(AkkaHttpServer.scala:222)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.AkkaHttpServer.$anonfun$httpsServerBinding$1$adapted(AkkaHttpServer.scala:218)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  Cause: java.lang.ExceptionInInitializerError: Exception java.lang.NoSuchFieldError: sha256WithRSAEncryption_oid [in thread "pool-1-thread-1"][0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.typesafe.sslconfig.ssl.FakeKeyStore$KeystoreSettings$.<clinit>(FakeKeyStore.scala:55)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at com.typesafe.sslconfig.ssl.FakeKeyStore$.generateKeyStore(FakeKeyStore.scala:71)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.x$1$lzycompute(SelfSigned.scala:24)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.x$1(SelfSigned.scala:23)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.sslContext$lzycompute(SelfSigned.scala:23)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSigned$.sslContext(SelfSigned.scala:23)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.SelfSignedSSLEngineProvider.sslContext(SelfSigned.scala:36)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.AkkaHttpServer.sslContext$lzycompute(AkkaHttpServer.scala:207)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.AkkaHttpServer.sslContext(AkkaHttpServer.scala:206)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  at play.core.server.AkkaHttpServer.$anonfun$httpsServerBinding$1(AkkaHttpServer.scala:222)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
-[0m[[0m[31merror[0m] [0m[0mUncaught exception when running controllers.ApplicationControllerSpec: java.lang.NoClassDefFoundError: Could not initialize class com.typesafe.sslconfig.ssl.FakeKeyStore$KeystoreSettings$[0m
-[0m[[0m[31merror[0m] [0m[0msbt.ForkMain$ForkError: java.lang.NoClassDefFoundError: Could not initialize class com.typesafe.sslconfig.ssl.FakeKeyStore$KeystoreSettings$[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.typesafe.sslconfig.ssl.FakeKeyStore$.generateKeyStore(FakeKeyStore.scala:71)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.x$1$lzycompute(SelfSigned.scala:24)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.x$1(SelfSigned.scala:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.sslContext$lzycompute(SelfSigned.scala:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.sslContext(SelfSigned.scala:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSignedSSLEngineProvider.sslContext(SelfSigned.scala:36)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.sslContext$lzycompute(AkkaHttpServer.scala:207)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.sslContext(AkkaHttpServer.scala:206)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.$anonfun$httpsServerBinding$1(AkkaHttpServer.scala:222)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.$anonfun$httpsServerBinding$1$adapted(AkkaHttpServer.scala:218)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Option.map(Option.scala:242)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.<init>(AkkaHttpServer.scala:218)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServerProvider.createServer(AkkaHttpServer.scala:652)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServerProvider.createServer(AkkaHttpServer.scala:650)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.ServerProvider.createServer(ServerProvider.scala:29)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.ServerProvider.createServer$(ServerProvider.scala:26)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServerProvider.createServer(AkkaHttpServer.scala:650)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.test.TestServer.start(TestServer.scala:47)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.test.DefaultTestServerFactory.start(TestServerFactory.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.runningServer(BaseOneServerPerSuite.scala:145)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.runningServer$(BaseOneServerPerSuite.scala:144)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.runningServer$lzycompute(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.runningServer(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.run(BaseOneServerPerSuite.scala:170)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.run$(BaseOneServerPerSuite.scala:159)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.org$scalatest$BeforeAndAfterAll$$super$run(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.BeforeAndAfterAll.liftedTree1$1(BeforeAndAfterAll.scala:213)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.BeforeAndAfterAll.run(BeforeAndAfterAll.scala:210)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.BeforeAndAfterAll.run$(BeforeAndAfterAll.scala:208)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.run(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:321)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:517)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.ForkMain$Run.lambda$runTest$1(ForkMain.java:413)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:834)[0m
-[0m[[0m[31merror[0m] [0m[0mCaused by: sbt.ForkMain$ForkError: java.lang.ExceptionInInitializerError: Exception java.lang.NoSuchFieldError: sha256WithRSAEncryption_oid [in thread "pool-1-thread-1"][0m
-[0m[[0m[31merror[0m] [0m[0m	at com.typesafe.sslconfig.ssl.FakeKeyStore$KeystoreSettings$.<clinit>(FakeKeyStore.scala:55)[0m
-[0m[[0m[31merror[0m] [0m[0m	at com.typesafe.sslconfig.ssl.FakeKeyStore$.generateKeyStore(FakeKeyStore.scala:71)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.x$1$lzycompute(SelfSigned.scala:24)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.x$1(SelfSigned.scala:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.sslContext$lzycompute(SelfSigned.scala:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSigned$.sslContext(SelfSigned.scala:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.SelfSignedSSLEngineProvider.sslContext(SelfSigned.scala:36)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.sslContext$lzycompute(AkkaHttpServer.scala:207)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.sslContext(AkkaHttpServer.scala:206)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.$anonfun$httpsServerBinding$1(AkkaHttpServer.scala:222)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.$anonfun$httpsServerBinding$1$adapted(AkkaHttpServer.scala:218)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Option.map(Option.scala:242)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServer.<init>(AkkaHttpServer.scala:218)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServerProvider.createServer(AkkaHttpServer.scala:652)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServerProvider.createServer(AkkaHttpServer.scala:650)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.ServerProvider.createServer(ServerProvider.scala:29)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.ServerProvider.createServer$(ServerProvider.scala:26)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.core.server.AkkaHttpServerProvider.createServer(AkkaHttpServer.scala:650)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.test.TestServer.start(TestServer.scala:47)[0m
-[0m[[0m[31merror[0m] [0m[0m	at play.api.test.DefaultTestServerFactory.start(TestServerFactory.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.runningServer(BaseOneServerPerSuite.scala:145)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.runningServer$(BaseOneServerPerSuite.scala:144)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.runningServer$lzycompute(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.runningServer(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.ServerProvider.portNumber(ServerProvider.scala:57)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.ServerProvider.portNumber$(ServerProvider.scala:56)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.portNumber(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.ServerProvider.port(ServerProvider.scala:48)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.ServerProvider.port$(ServerProvider.scala:48)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.port(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.run(BaseOneServerPerSuite.scala:161)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatestplus.play.BaseOneServerPerSuite.run$(BaseOneServerPerSuite.scala:159)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.org$scalatest$BeforeAndAfterAll$$super$run(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.BeforeAndAfterAll.liftedTree1$1(BeforeAndAfterAll.scala:213)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.BeforeAndAfterAll.run(BeforeAndAfterAll.scala:210)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.BeforeAndAfterAll.run$(BeforeAndAfterAll.scala:208)[0m
-[0m[[0m[31merror[0m] [0m[0m	at controllers.ApplicationControllerSpec.run(ApplicationControllerSpec.scala:5)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:321)[0m
-[0m[[0m[31merror[0m] [0m[0m	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:517)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.ForkMain$Run.lambda$runTest$1(ForkMain.java:413)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:834)[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@35fc6dc4, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@4c6e276e, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeController GET[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m- should render the index page from a new instance of controller *** FAILED ***[0m[0m
@@ -420,14 +309,22 @@
 [0m[[0m[0minfo[0m] [0m[0m  [0m
 [0m[[0m[0minfo[0m] [0m[0m[31m  " did not include substring "Welcome to Play" (HomeControllerSpec.scala:46)[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 3 events.[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 2 seconds, 102 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 3[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 1[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 0, failed 3, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 SUITE ABORTED ***[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@534df152, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .index[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return TODO[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .update()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete()[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 2 seconds, 287 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 4[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 1, failed 3, canceled 0, ignored 0, pending 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m*** 3 TESTS FAILED ***[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
 [0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
 [0m[[0m[31merror[0m] [0m[0m	controllers.HomeControllerSpec[0m
-[0m[[0m[31merror[0m] [0m[0mError during tests:[0m
-[0m[[0m[31merror[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
 [0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

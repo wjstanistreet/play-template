@@ -46,4 +46,6 @@ class HomeControllerSpec extends BaseSpec with Injecting with GuiceOneAppPerSuit
       contentAsString(home) must include ("Welcome to Play")
     }
   }
+
+
 }

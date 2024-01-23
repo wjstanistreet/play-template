@@ -1,0 +1,235 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(test, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / test[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets:play-template[0m
+[0m[[0m[0mdebug[0m] [0m[0mExporting web-assets-test:play-template[0m
+[0m[[0m[31merror[0m] [0m[0m## Exception when compiling 3 sources to /Users/william.stanistreet/Documents/Scala/play/play-template/target/scala-2.13/test-classes[0m
+[0m[[0m[31merror[0m] [0m[0mjava.lang.RuntimeException: Error opening zip file: scalactic_2.13-3.2.5.jar[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.Locate$JarDefinesClass.liftedTree1$1(Locate.scala:107)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.Locate$JarDefinesClass.<init>(Locate.scala:102)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.Locate$.definesClass(Locate.scala:88)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.VirtualFileValueCache$.$anonfun$definesClassCache$1(VirtualFileValueCache.scala:29)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.VirtualFileValueCache0$VirtualFileCache.update(VirtualFileValueCache.scala:72)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.VirtualFileValueCache0$VirtualFileCache.get(VirtualFileValueCache.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.VirtualFileValueCache0.$anonfun$get$1(VirtualFileValueCache.scala:58)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.Defaults$$anon$6.definesClass(Defaults.scala:2392)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.Locate$.$anonfun$entry$1(Locate.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.Iterator$$anon$10.next(Iterator.scala:461)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.TraversableOnce.collectFirst(TraversableOnce.scala:180)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.TraversableOnce.collectFirst$(TraversableOnce.scala:167)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.AbstractIterator.collectFirst(Iterator.scala:1431)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.Locate$.$anonfun$entry$2(Locate.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.LookupImpl.lookupOnClasspath(LookupImpl.scala:51)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$3(IncrementalCommon.scala:764)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$3$adapted(IncrementalCommon.scala:754)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.Iterator.exists(Iterator.scala:969)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.Iterator.exists$(Iterator.scala:967)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.AbstractIterator.exists(Iterator.scala:1431)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.IterableLike.exists(IterableLike.scala:79)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.IterableLike.exists$(IterableLike.scala:78)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.AbstractIterable.exists(Iterable.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.IncrementalCommon$.isLibraryChanged$1(IncrementalCommon.scala:754)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$1(IncrementalCommon.scala:774)[0m
+[0m[[0m[31merror[0m] [0m[0msbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$1$adapted(IncrementalCommon.scala:732)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AugmentedIterableIterator.filter2combiner(RemainsIterator.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AugmentedIterableIterator.filter2combiner$(RemainsIterator.scala:146)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.immutable.ParVector$ParVectorIterator.filter2combiner(ParVector.scala:66)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ParIterableLike$Filter.leaf(ParIterableLike.scala:1119)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.Task.$anonfun$tryLeaf$1(Tasks.scala:53)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.util.control.Breaks$$anon$1.catchBreak(Breaks.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.Task.tryLeaf(Tasks.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.Task.tryLeaf$(Tasks.scala:50)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ParIterableLike$Filter.tryLeaf(ParIterableLike.scala:1115)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.internal(Tasks.scala:160)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.internal$(Tasks.scala:157)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.internal(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute(Tasks.scala:150)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute$(Tasks.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.compute(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:189)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinTask.doJoin(ForkJoinTask.java:396)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinTask.join(ForkJoinTask.java:721)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ForkJoinTasks$WrappedTask.sync(Tasks.scala:379)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ForkJoinTasks$WrappedTask.sync$(Tasks.scala:379)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.sync(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ForkJoinTasks.executeAndWaitResult(Tasks.scala:423)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ForkJoinTasks.executeAndWaitResult$(Tasks.scala:416)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ForkJoinTaskSupport.executeAndWaitResult(TaskSupport.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ExecutionContextTasks.executeAndWaitResult(Tasks.scala:555)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ExecutionContextTasks.executeAndWaitResult$(Tasks.scala:555)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ExecutionContextTaskSupport.executeAndWaitResult(TaskSupport.scala:84)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ParIterableLike$ResultMapping.leaf(ParIterableLike.scala:968)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.Task.$anonfun$tryLeaf$1(Tasks.scala:53)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.util.control.Breaks$$anon$1.catchBreak(Breaks.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.Task.tryLeaf(Tasks.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.Task.tryLeaf$(Tasks.scala:50)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.ParIterableLike$ResultMapping.tryLeaf(ParIterableLike.scala:963)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute(Tasks.scala:153)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute$(Tasks.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0mscala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.compute(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:189)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)[0m
+[0m[[0m[31merror[0m] [0m[0mjava.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)[0m
+[0m[[0m[31merror[0m] [0m[0m           [0m
+[0m[[0m[31merror[0m] [0m[0mjava.lang.RuntimeException: Error opening zip file: scalactic_2.13-3.2.5.jar[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$JarDefinesClass.liftedTree1$1(Locate.scala:107)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$JarDefinesClass.<init>(Locate.scala:102)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$.definesClass(Locate.scala:88)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache$.$anonfun$definesClassCache$1(VirtualFileValueCache.scala:29)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache0$VirtualFileCache.update(VirtualFileValueCache.scala:72)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache0$VirtualFileCache.get(VirtualFileValueCache.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache0.$anonfun$get$1(VirtualFileValueCache.scala:58)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$$anon$6.definesClass(Defaults.scala:2392)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$.$anonfun$entry$1(Locate.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator$$anon$10.next(Iterator.scala:461)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableOnce.collectFirst(TraversableOnce.scala:180)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableOnce.collectFirst$(TraversableOnce.scala:167)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterator.collectFirst(Iterator.scala:1431)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$.$anonfun$entry$2(Locate.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.LookupImpl.lookupOnClasspath(LookupImpl.scala:51)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$3(IncrementalCommon.scala:764)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$3$adapted(IncrementalCommon.scala:754)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator.exists(Iterator.scala:969)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator.exists$(Iterator.scala:967)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterator.exists(Iterator.scala:1431)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableLike.exists(IterableLike.scala:79)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableLike.exists$(IterableLike.scala:78)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterable.exists(Iterable.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.isLibraryChanged$1(IncrementalCommon.scala:754)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$1(IncrementalCommon.scala:774)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$1$adapted(IncrementalCommon.scala:732)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AugmentedIterableIterator.filter2combiner(RemainsIterator.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AugmentedIterableIterator.filter2combiner$(RemainsIterator.scala:146)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.immutable.ParVector$ParVectorIterator.filter2combiner(ParVector.scala:66)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$Filter.leaf(ParIterableLike.scala:1119)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.$anonfun$tryLeaf$1(Tasks.scala:53)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.control.Breaks$$anon$1.catchBreak(Breaks.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf(Tasks.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf$(Tasks.scala:50)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$Filter.tryLeaf(ParIterableLike.scala:1115)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.internal(Tasks.scala:160)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.internal$(Tasks.scala:157)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.internal(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute(Tasks.scala:150)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute$(Tasks.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.compute(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:189)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.doJoin(ForkJoinTask.java:396)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.join(ForkJoinTask.java:721)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks$WrappedTask.sync(Tasks.scala:379)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks$WrappedTask.sync$(Tasks.scala:379)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.sync(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks.executeAndWaitResult(Tasks.scala:423)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks.executeAndWaitResult$(Tasks.scala:416)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTaskSupport.executeAndWaitResult(TaskSupport.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ExecutionContextTasks.executeAndWaitResult(Tasks.scala:555)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ExecutionContextTasks.executeAndWaitResult$(Tasks.scala:555)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ExecutionContextTaskSupport.executeAndWaitResult(TaskSupport.scala:84)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$ResultMapping.leaf(ParIterableLike.scala:968)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.$anonfun$tryLeaf$1(Tasks.scala:53)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.control.Breaks$$anon$1.catchBreak(Breaks.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf(Tasks.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf$(Tasks.scala:50)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$ResultMapping.tryLeaf(ParIterableLike.scala:963)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute(Tasks.scala:153)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute$(Tasks.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.compute(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:189)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)[0m
+[0m[[0m[31merror[0m] [0m[0mCaused by: java.util.zip.ZipException: Invalid CEN header (invalid zip64 extra data field size)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile$Source.zerror(ZipFile.java:1731)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile$Source.checkExtraFields(ZipFile.java:1641)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile$Source.initCEN(ZipFile.java:1573)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile$Source.<init>(ZipFile.java:1307)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile$Source.get(ZipFile.java:1270)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile$CleanableResource.<init>(ZipFile.java:741)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile$CleanableResource.get(ZipFile.java:850)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:256)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:185)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$JarDefinesClass.liftedTree1$1(Locate.scala:103)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$JarDefinesClass.<init>(Locate.scala:102)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$.definesClass(Locate.scala:88)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache$.$anonfun$definesClassCache$1(VirtualFileValueCache.scala:29)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache0$VirtualFileCache.update(VirtualFileValueCache.scala:72)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache0$VirtualFileCache.get(VirtualFileValueCache.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.VirtualFileValueCache0.$anonfun$get$1(VirtualFileValueCache.scala:58)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$$anon$6.definesClass(Defaults.scala:2392)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$.$anonfun$entry$1(Locate.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator$$anon$10.next(Iterator.scala:461)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableOnce.collectFirst(TraversableOnce.scala:180)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableOnce.collectFirst$(TraversableOnce.scala:167)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterator.collectFirst(Iterator.scala:1431)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.Locate$.$anonfun$entry$2(Locate.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.LookupImpl.lookupOnClasspath(LookupImpl.scala:51)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$3(IncrementalCommon.scala:764)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$3$adapted(IncrementalCommon.scala:754)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator.exists(Iterator.scala:969)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.Iterator.exists$(Iterator.scala:967)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterator.exists(Iterator.scala:1431)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableLike.exists(IterableLike.scala:79)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.IterableLike.exists$(IterableLike.scala:78)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.AbstractIterable.exists(Iterable.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.isLibraryChanged$1(IncrementalCommon.scala:754)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$1(IncrementalCommon.scala:774)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.inc.IncrementalCommon$.$anonfun$isLibraryModified$1$adapted(IncrementalCommon.scala:732)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AugmentedIterableIterator.filter2combiner(RemainsIterator.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AugmentedIterableIterator.filter2combiner$(RemainsIterator.scala:146)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.immutable.ParVector$ParVectorIterator.filter2combiner(ParVector.scala:66)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$Filter.leaf(ParIterableLike.scala:1119)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.$anonfun$tryLeaf$1(Tasks.scala:53)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.control.Breaks$$anon$1.catchBreak(Breaks.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf(Tasks.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf$(Tasks.scala:50)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$Filter.tryLeaf(ParIterableLike.scala:1115)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.internal(Tasks.scala:160)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.internal$(Tasks.scala:157)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.internal(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute(Tasks.scala:150)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute$(Tasks.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.compute(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:189)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.doJoin(ForkJoinTask.java:396)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.join(ForkJoinTask.java:721)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks$WrappedTask.sync(Tasks.scala:379)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks$WrappedTask.sync$(Tasks.scala:379)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.sync(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks.executeAndWaitResult(Tasks.scala:423)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTasks.executeAndWaitResult$(Tasks.scala:416)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ForkJoinTaskSupport.executeAndWaitResult(TaskSupport.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ExecutionContextTasks.executeAndWaitResult(Tasks.scala:555)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ExecutionContextTasks.executeAndWaitResult$(Tasks.scala:555)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ExecutionContextTaskSupport.executeAndWaitResult(TaskSupport.scala:84)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$ResultMapping.leaf(ParIterableLike.scala:968)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.$anonfun$tryLeaf$1(Tasks.scala:53)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.control.Breaks$$anon$1.catchBreak(Breaks.scala:67)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf(Tasks.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.Task.tryLeaf$(Tasks.scala:50)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.ParIterableLike$ResultMapping.tryLeaf(ParIterableLike.scala:963)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute(Tasks.scala:153)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask.compute$(Tasks.scala:149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.compute(Tasks.scala:440)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.RecursiveAction.exec(RecursiveAction.java:189)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mcompileIncremental[0m) Error opening zip file: scalactic_2.13-3.2.5.jar[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 1 s, completed 10 Jan 2024, 13:52:26[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(idea-shell, None, None)[0m
