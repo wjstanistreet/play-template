@@ -8,7 +8,9 @@ import play.api.test.Helpers._
 class ApplicationControllerSpec extends BaseSpecWithApplication {
 
   val TestApplicationController = new ApplicationController(
-    component
+    component,
+    repository,
+    executionContext
   )
 
   "ApplicationController .index" should {
@@ -25,7 +27,11 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
   }
 
   "ApplicationController .read()" should {
+//    val result = TestApplicationController.read()(FakeRequest())
 
+//    "return TODO" in {
+//      status(result) shouldBe Status.OK
+//    }
   }
 
   "ApplicationController .update()" should {

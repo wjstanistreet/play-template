@@ -6,8 +6,12 @@
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .index[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should return TODO[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .update()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete()[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 2 seconds, 432 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 2 seconds, 214 milliseconds.[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 1[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0[0m[0m
