@@ -19,9 +19,7 @@ class ApplicationController @Inject()(
 
   def index(): Action[AnyContent] = Action.async { implicit request =>
     dataRepository.index().map {
-      case Right(item: Seq[DataModel]) => Ok {
-        Json.toJson(item)
-      }
+      case Right(item: Seq[DataModel]) => Ok {Json.toJson(item)}
       case Left(error) => Status(error)(Json.toJson("Unable to find any books"))
     }
   }
@@ -41,21 +39,22 @@ class ApplicationController @Inject()(
   }
   def read(id: String): Action[AnyContent] = Action.async { implicit request =>
     // retrieves the data by calling .read and maps the Future to a Result, in this case Ok{json data}
-    dataRepository.read(id).map { data => Ok {
-      Json.toJson(data)
-    }}
+    dataRepository.read(id).map {
+      case Right(data) => Ok {Json.toJson(data)}
+      case Left(_) => NotFound
+    }
   }
 
   // similar to .create(): parse request, validate json body, then call repository service
   def update(id: String): Action[JsValue] = Action.async(parse.json) { implicit request =>
     request.body.validate[DataModel] match {
       case JsSuccess(dataModel, _) =>
-        dataRepository.update(id, dataModel).map(_ => Accepted {Json.toJson(dataModel)})
+        dataRepository.update(id, dataModel).map{_ => Accepted}
       case JsError(_) => Future(BadRequest)
     }
   }
   def delete(id: String): Action[AnyContent] = Action.async { implicit request =>
-    dataRepository.delete(id).map { _ => Accepted }
+    dataRepository.delete(id).map(result => if (result.wasAcknowledged()) Accepted else BadRequest)
   }
 }
 

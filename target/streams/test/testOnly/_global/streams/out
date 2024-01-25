@@ -1,20 +1,28 @@
-[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector()[0m
-[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
-[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 1 initial tasks for 1 tests.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@4c6e276e, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(controllers.ApplicationControllerSpec, org.scalatest.tools.Framework$$anon$1@44f49f15, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .index[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should return TODO[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create()[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read()[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .update()[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete()[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 2 seconds, 214 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should create a book in the database[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should find a book in the database by id *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  scala.MatchError: None (of class scala.None$)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at repositories.DataRepository.$anonfun$read$1(DataRepository.scala:45)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:470)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 606 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 3[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 2, failed 1, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtestOnly[0m) sbt.TestsFailedException: Tests unsuccessful[0m

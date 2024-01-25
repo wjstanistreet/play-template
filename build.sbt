@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
 )
 dependencyOverrides += "com.fasterxml.jackson.core" % "jackson-databind" % "2.11.0"
 parallelExecution in Test := false
+Test / fork := false
 lazy val root = (project in file("."))
   .settings(
     name := "play-template"

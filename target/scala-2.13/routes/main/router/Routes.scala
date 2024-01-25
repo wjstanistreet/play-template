@@ -44,10 +44,10 @@ class Routes(
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.index()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api""", """controllers.ApplicationController.index()"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """create""", """controllers.ApplicationController.create()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """read/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.read(id:String)"""),
-    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """update/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.update(id:String)"""),
-    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """delete/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.delete(id:String)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api""", """controllers.ApplicationController.create()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.read(id:String)"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.update(id:String)"""),
+    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """api/""" + "$" + """id<[^/]+>""", """controllers.ApplicationController.delete(id:String)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -94,7 +94,7 @@ class Routes(
 
   // @LINE:4
   private[this] lazy val controllers_ApplicationController_create2_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("create")))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api")))
   )
   private[this] lazy val controllers_ApplicationController_create2_invoker = createInvoker(
     ApplicationController_1.create(),
@@ -104,7 +104,7 @@ class Routes(
       "create",
       Nil,
       "POST",
-      this.prefix + """create""",
+      this.prefix + """api""",
       """""",
       Seq()
     )
@@ -112,7 +112,7 @@ class Routes(
 
   // @LINE:5
   private[this] lazy val controllers_ApplicationController_read3_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("read/"), DynamicPart("id", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("id", """[^/]+""",true)))
   )
   private[this] lazy val controllers_ApplicationController_read3_invoker = createInvoker(
     ApplicationController_1.read(fakeValue[String]),
@@ -122,7 +122,7 @@ class Routes(
       "read",
       Seq(classOf[String]),
       "GET",
-      this.prefix + """read/""" + "$" + """id<[^/]+>""",
+      this.prefix + """api/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )
@@ -130,7 +130,7 @@ class Routes(
 
   // @LINE:6
   private[this] lazy val controllers_ApplicationController_update4_route = Route("PUT",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("update/"), DynamicPart("id", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("id", """[^/]+""",true)))
   )
   private[this] lazy val controllers_ApplicationController_update4_invoker = createInvoker(
     ApplicationController_1.update(fakeValue[String]),
@@ -140,7 +140,7 @@ class Routes(
       "update",
       Seq(classOf[String]),
       "PUT",
-      this.prefix + """update/""" + "$" + """id<[^/]+>""",
+      this.prefix + """api/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )
@@ -148,7 +148,7 @@ class Routes(
 
   // @LINE:7
   private[this] lazy val controllers_ApplicationController_delete5_route = Route("DELETE",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("delete/"), DynamicPart("id", """[^/]+""",true)))
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("api/"), DynamicPart("id", """[^/]+""",true)))
   )
   private[this] lazy val controllers_ApplicationController_delete5_invoker = createInvoker(
     ApplicationController_1.delete(fakeValue[String]),
@@ -158,7 +158,7 @@ class Routes(
       "delete",
       Seq(classOf[String]),
       "DELETE",
-      this.prefix + """delete/""" + "$" + """id<[^/]+>""",
+      this.prefix + """api/""" + "$" + """id<[^/]+>""",
       """""",
       Seq()
     )
