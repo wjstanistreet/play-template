@@ -2,6 +2,7 @@ package controllers
 
 import baseSpec.BaseSpecWithApplication
 import models.DataModel
+import play.api.http.HttpEntity.Strict
 import play.api.test.FakeRequest
 import play.api.http.Status
 import play.api.libs.json.{JsValue, Json}
@@ -32,6 +33,13 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
     200
   )
 
+  private val differentIDModel: DataModel = DataModel(
+    "wxyz",
+    "new test name",
+    "new test description",
+    300
+  )
+
   private val badDataModel: BadDataModel = BadDataModel("test")
 
   "ApplicationController .index" should {
@@ -49,15 +57,14 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
       val createdResult: Future[Result] = TestApplicationController.create()(request)
 
+      val readResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
+
+      contentAsJson(readResult).as[JsValue] shouldBe Json.toJson(dataModel)
       status(createdResult) shouldBe Status.CREATED
       afterEach()
     }
 
-    "fail with a BadRequest" in {
-
-    }
-
-    "fail if the wrong class is validated" in {
+    "return a bad request if an incorrect validated model is an argument" in {
       beforeEach()
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(badDataModel))
       val createdResult: Future[Result] = TestApplicationController.create()(request)
@@ -65,21 +72,25 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       status(createdResult) shouldBe Status.BAD_REQUEST
       afterEach()
     }
-
   }
 
   "ApplicationController .read" should {
 
     "find a book in the database by id" in {
-
-      val request: FakeRequest[JsValue] = buildGet("/api/${dataModel._id}").withBody[JsValue](Json.toJson(dataModel))
-      val createdResult: Future[Result] = TestApplicationController.create()(request)
+      beforeEach()
+      createBook()
 
       val readResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
 
-      status(createdResult) shouldBe Status.CREATED
       status(readResult) shouldBe Status.OK
       contentAsJson(readResult).as[JsValue] shouldBe Json.toJson(dataModel)
+      afterEach()
+    }
+
+    "return no content if a book is not in database" in {
+      val readResult: Future[Result] = TestApplicationController.read("wxyz")(FakeRequest())
+
+      status(readResult) shouldBe Status.NO_CONTENT
     }
   }
 
@@ -87,16 +98,37 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
     "edit an existing book in the database" in {
       beforeEach()
-      val createdResult: Future[Result] = createBook()
+      createBook()
 
       val updateRequest: FakeRequest[JsValue] = buildPost("/api/${dataModel._id}").withBody[JsValue](Json.toJson(updatedDataModel))
       val updatedResult: Future[Result] = TestApplicationController.update("abcd")(updateRequest)
 
-      val readResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
-
-      status(createdResult) shouldBe Status.CREATED
       status(updatedResult) shouldBe Status.ACCEPTED
-      contentAsJson(readResult).as[JsValue] shouldBe Json.toJson(updatedDataModel)
+      contentAsJson(updatedResult).as[JsValue] shouldBe Json.toJson(updatedDataModel)
+      afterEach()
+    }
+
+    "return a bad request if an incorrect validated model is an argument" in {
+      beforeEach()
+      createBook()
+
+      val updateRequest: FakeRequest[JsValue] = buildPost("/api/${dataModel._id}").withBody[JsValue](Json.toJson(badDataModel))
+      val updatedResult: Future[Result] = TestApplicationController.update("abcd")(updateRequest)
+
+      status(updatedResult) shouldBe Status.BAD_REQUEST
+      afterEach()
+    }
+
+    "upsert an entry if ID not found" in {
+      beforeEach()
+
+      val updateRequest: FakeRequest[JsValue] = buildPost("/api/${dataModel._id}").withBody[JsValue](Json.toJson(differentIDModel))
+      val updatedResult: Result = await(TestApplicationController.update("wxyz")(updateRequest))
+
+      val readResult: Future[Result] = TestApplicationController.read("wxyz")(FakeRequest())
+
+      updatedResult.header.status shouldBe Status.ACCEPTED
+      contentAsJson(readResult) shouldBe Json.toJson(differentIDModel)
       afterEach()
     }
   }
@@ -105,26 +137,34 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
     "remove an entry in the database" in {
       beforeEach()
-      val createdResult: Future[Result] = createBook()
+      createBook()
 
+      val readPreDeletion: Result = await(TestApplicationController.read("abcd")(FakeRequest()))
       val deleteResult: Future[Result] = TestApplicationController.delete("abcd")(FakeRequest())
+      val readPostDeletion: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
 
-      val readResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
-
-      status(createdResult) shouldBe Status.CREATED
+      readPreDeletion.header.status shouldBe Status.OK
       status(deleteResult) shouldBe Status.ACCEPTED
-      status(readResult) shouldBe Status.NOT_FOUND
+      status(readPostDeletion) shouldBe Status.NO_CONTENT
+      afterEach()
+    }
+
+    "return no content if there is no book with an ID" in {
+      beforeEach()
+      val deleteResult: Future[Result] = TestApplicationController.delete("wxyz")(FakeRequest())
+
+      status(deleteResult) shouldBe Status.NO_CONTENT
       afterEach()
     }
   }
 
-  override def beforeEach(): Unit = repository.deleteAll()
+  override def beforeEach(): Unit = await(repository.deleteAll())
 
-  def createBook(): Future[Result] = {
+  def createBook(): Result = {
     val createRequest: FakeRequest[JsValue] = buildPost("/api/${dataModel._id}").withBody[JsValue](Json.toJson(dataModel))
-    TestApplicationController.create()(createRequest)
+    await(TestApplicationController.create()(createRequest))
   }
 
-  override def afterEach(): Unit = repository.deleteAll()
+  override def afterEach(): Unit = await(repository.deleteAll())
 }
 
