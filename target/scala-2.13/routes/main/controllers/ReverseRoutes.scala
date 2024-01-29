@@ -40,7 +40,7 @@ package controllers {
     // @LINE:4
     def create(): Call = {
       
-      Call("POST", _prefix + { _defaultPrefix } + "api")
+      Call("POST", _prefix + { _defaultPrefix } + "api/create")
     }
   
     // @LINE:7

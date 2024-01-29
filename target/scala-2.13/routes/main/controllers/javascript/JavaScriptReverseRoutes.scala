@@ -52,7 +52,7 @@ package controllers.javascript {
       "controllers.ApplicationController.create",
       """
         function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "api"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "api/create"})
         }
       """
     )
