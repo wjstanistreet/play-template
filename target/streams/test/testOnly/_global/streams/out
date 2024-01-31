@@ -1,4 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(controllers.ApplicationControllerSpec, org.scalatest.tools.Framework$$anon$1@a89d3c9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(controllers.ApplicationControllerSpec, org.scalatest.tools.Framework$$anon$1@9e4332f, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .index[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should return TODO[0m[0m
@@ -15,10 +15,25 @@
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete()[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should remove an entry in the database[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should return no content if there is no book with an ID[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 751 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 10[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .getGoogleBook[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should test *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  play.api.libs.json.JsResultException: JsResultException(errors:List((/etag,List(JsonValidationError(List(error.path.missing),ArraySeq()))), (/selfLink,List(JsonValidationError(List(error.path.missing),ArraySeq()))), (/id,List(JsonValidationError(List(error.path.missing),ArraySeq())))))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.json.JsReadable.$anonfun$as$2(JsReadable.scala:25)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.json.JsError.fold(JsResult.scala:66)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.json.JsReadable.as(JsReadable.scala:24)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.json.JsReadable.as$(JsReadable.scala:23)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at play.api.libs.json.JsObject.as(JsValue.scala:126)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at connectors.LibraryConnector.$anonfun$get$1(LibraryConnector.scala:15)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:467)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 2 seconds, 241 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 11[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 10, failed 0, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 10, failed 1, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtestOnly[0m) sbt.TestsFailedException: Tests unsuccessful[0m

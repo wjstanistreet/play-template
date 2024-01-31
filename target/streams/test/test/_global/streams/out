@@ -1,4 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(controllers.HomeControllerSpec, org.scalatest.tools.Framework$$anon$1@4d7034ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(controllers.HomeControllerSpec, org.scalatest.tools.Framework$$anon$1@6388944a, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeController GET[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m- should render the index page from a new instance of controller *** FAILED ***[0m[0m
@@ -304,27 +304,30 @@
 [0m[[0m[0minfo[0m] [0m[0m[31m  </html>[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m  [0m
 [0m[[0m[0minfo[0m] [0m[0m[31m  " did not include substring "Welcome to Play" (HomeControllerSpec.scala:46)[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(controllers.ApplicationControllerSpec, org.scalatest.tools.Framework$$anon$1@4d7034ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(controllers.ApplicationControllerSpec, org.scalatest.tools.Framework$$anon$1@6388944a, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .index[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should return TODO[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should create a book in the database[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should fail if the wrong class is validated[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return a bad request if an incorrect validated model is an argument[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should find a book in the database by id[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return no content if a book is not in database[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .update()[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m- should edit an existing book in the database *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  {"_id":"abcd","name":"test name","description":"test description","numSales":100} was not equal to {"_id":"abcd","name":"edited test name","description":"edited test description","numSales":200} (ApplicationControllerSpec.scala:94)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should edit an existing book in the database[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return a bad request if an incorrect validated model is an argument[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should upsert an entry if ID not found[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete()[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m- should remove an entry in the database *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  200 was not equal to 404 (ApplicationControllerSpec.scala:111)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 1 second, 746 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 9[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should remove an entry in the database[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return no content if there is no book with an ID[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 2 seconds, 254 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 13[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 4, failed 5, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m*** 5 TESTS FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 10, failed 3, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 3 TESTS FAILED ***[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
 [0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
-[0m[[0m[31merror[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
 [0m[[0m[31merror[0m] [0m[0m	controllers.HomeControllerSpec[0m
 [0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

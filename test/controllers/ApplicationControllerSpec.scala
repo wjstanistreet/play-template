@@ -16,6 +16,7 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
   val TestApplicationController = new ApplicationController(
     component,
     repository,
+    service,
     executionContext
   )
 
@@ -156,6 +157,16 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       status(deleteResult) shouldBe Status.NO_CONTENT
       afterEach()
     }
+  }
+
+  "ApplicationController .getGoogleBook" should {
+
+    "test" in {
+      val testVal: Result = await(TestApplicationController.getGoogleBook("flowers+inauthor", "O9ZCAQAAMAAJ")(FakeRequest()))
+
+      testVal shouldBe 1
+    }
+
   }
 
   override def beforeEach(): Unit = await(repository.deleteAll())

@@ -4,6 +4,7 @@ import models.DataModel
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents, Request, ResponseHeader, Results}
 import repositories.DataRepository
+import services.LibraryService
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
@@ -13,6 +14,7 @@ import scala.concurrent.{ExecutionContext, Future}
 class ApplicationController @Inject()(
                                        val controllerComponents: ControllerComponents,
                                        val dataRepository: DataRepository,
+                                       val service: LibraryService,
                                        implicit val ec: ExecutionContext
                                      ) extends BaseController {
   // ControllerComponents: trait describing common dependencies that most controllers rely on
@@ -62,6 +64,12 @@ class ApplicationController @Inject()(
     dataRepository.delete(id) map {
       case Right(_) => Accepted
       case Left(error) => Status(error)
+    }
+  }
+
+  def getGoogleBook(search: String, term: String): Action[AnyContent] = Action.async { implicit request =>
+    service.getGoogleBook(search = search, term = term) map {
+      data => Ok(Json.toJson(data))
     }
   }
 }
