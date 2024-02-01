@@ -1,6 +1,6 @@
 package controllers
 
-import models.DataModel
+import models.{APIError, DataModel}
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents, Request, ResponseHeader, Results}
 import repositories.DataRepository
@@ -22,7 +22,7 @@ class ApplicationController @Inject()(
   def index(): Action[AnyContent] = Action.async { implicit request =>
     dataRepository.index().map {
       case Right(item: Seq[DataModel]) => Ok(Json.toJson(item))
-      case Left(error) => Status(error)(Json.toJson("Unable to find any books"))
+      case Left(error) => Status(error.upstreamStatus)(Json.toJson(error.upstreamMessage))
     }
   }
   // TODO creates a default page that allows the app to continue to run without needing to implement every page
@@ -68,8 +68,9 @@ class ApplicationController @Inject()(
   }
 
   def getGoogleBook(search: String, term: String): Action[AnyContent] = Action.async { implicit request =>
-    service.getGoogleBook(search = search, term = term) map {
-      data => Ok(Json.toJson(data))
+    service.getGoogleBook(search = search, term = term).value.map {
+      case Right(data) => Ok(Json.toJson(data))
+      case Left(error) => Status(error.httpResponseStatus)(error.reason)
     }
   }
 }

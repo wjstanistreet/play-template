@@ -1,6 +1,6 @@
 package repositories
 
-import models.DataModel
+import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
 import org.mongodb.scala.model.Filters.empty
 import org.mongodb.scala.model._
@@ -25,10 +25,10 @@ class DataRepository @Inject()(
   replaceIndexes = false
 ) {
 
-  def index(): Future[Either[Int, Seq[DataModel]]]  =
+  def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]]  =
     collection.find().toFuture() map {
       case books: Seq[DataModel] => Right(books)
-      case _ => Left(NOT_FOUND)
+      case _ => Left(APIError.BadAPIResponse(404, "Books cannot be found"))
     }
 
   def create(book: DataModel): Future[Either[Int, result.InsertOneResult]] =

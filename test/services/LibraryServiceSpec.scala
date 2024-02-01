@@ -1,8 +1,10 @@
 package services
 
 import baseSpec.BaseSpec
+import cats.data.EitherT
 import connectors.LibraryConnector
-import models.{Book, DataModel}
+import models.APIError.BadAPIResponse
+import models.{APIError, Book, DataModel}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
@@ -28,11 +30,24 @@ class LibraryServiceSpec extends BaseSpec with MockFactory with ScalaFutures wit
     "return a book as a DataModel" in {
       (mockConnector.get[DataModel](_: String)(_: OFormat[DataModel], _: ExecutionContext))
         .expects(url, *, *)
-        .returning(Future(gameOfThrones.as[DataModel]))
+        .returning(EitherT.right[APIError](Future(gameOfThrones.as[DataModel])))
         .once()
 
-      whenReady(testService.getGoogleDataModel(urlOverride = Some(url), search = "", term = "")) { result =>
-        result shouldBe gameOfThrones.as[DataModel]
+      whenReady(testService.getGoogleDataModel(urlOverride = Some(url), search = "", term = "").value) { result =>
+        result shouldBe Right(gameOfThrones.as[DataModel])
+      }
+    }
+
+    "return an error" in {
+      val url: String = "testUrl"
+
+      (mockConnector.get[DataModel](_: String)(_: OFormat[DataModel], _: ExecutionContext))
+        .expects(url, *, *)
+        .returning(EitherT.left[DataModel](Future(APIError.BadAPIResponse(404, "Book not found"))))
+        .once()
+
+      whenReady(testService.getGoogleDataModel(urlOverride = Some(url), search = "", term = "").value) { result =>
+        result shouldBe Left(APIError.BadAPIResponse(404, "Book not found"))
       }
     }
   }
