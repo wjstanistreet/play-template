@@ -159,16 +159,6 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
     }
   }
 
-  "ApplicationController .getGoogleBook" should {
-
-    "test" in {
-      val testVal: Result = await(TestApplicationController.getGoogleBook("flowers+inauthor", "O9ZCAQAAMAAJ")(FakeRequest()))
-
-      testVal shouldBe 1
-    }
-
-  }
-
   override def beforeEach(): Unit = await(repository.deleteAll())
 
   def createBook(): Result = {
