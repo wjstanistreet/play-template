@@ -27,16 +27,15 @@ class DataRepository @Inject()(
 
   def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]]  =
     collection.find().toFuture() map {
-      case books: Seq[DataModel] => Right(books)
-      case _ => Left(APIError.BadAPIResponse(404, "Books cannot be found"))
+      case books: Seq[DataModel]  => Right(books)
+      case _                      => Left(APIError.BadAPIResponse(404, "Books cannot be found"))
     }
 
-  def create(book: DataModel): Future[Either[Int, result.InsertOneResult]] =
-    collection
-      .insertOne(book).headOption() map {
+  def create(book: DataModel): Future[Either[APIError.BadAPIResponse, result.InsertOneResult]] =
+    collection.insertOne(book).headOption() map {
       case Some(data) => Right(data)
-      case None => Left(NO_CONTENT)
-      case _ => Left(NOT_FOUND)
+      case None       => Left(APIError.BadAPIResponse(NO_CONTENT, "Unable to create book"))
+      case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error creating book"))
     }
 
   private def byID(id: String): Bson =
@@ -44,32 +43,44 @@ class DataRepository @Inject()(
       Filters.equal("_id", id)
     )
 
-  def read(id: String): Future[Either[Int, DataModel]] =
+  def read(id: String): Future[Either[APIError.BadAPIResponse, DataModel]] =
     collection.find(byID(id)).headOption() map {
       case Some(data) => Right(data)
-      case None => Left(NO_CONTENT)
-      case _ => Left(NOT_FOUND)
+      case None       => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to retrieve book with id: $id"))
+      case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error reading book"))
     }
 
-  def update(id: String, book: DataModel): Future[Either[Int, result.UpdateResult]] = {
+  private def byField(fieldName: String, term: String): Bson =
+    Filters.and(
+      Filters.equal(fieldName, term)
+    )
+
+  def readByField(fieldName: String, term: String): Future[Either[APIError.BadAPIResponse, DataModel]] =
+    collection.find(byField(fieldName, term)).headOption() map {
+      case Some(data) => Right(data)
+      case None       => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to retrieve book with field: $fieldName and term: $term"))
+      case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error reading book"))
+    }
+
+  def update(id: String, book: DataModel): Future[Either[APIError.BadAPIResponse, result.UpdateResult]] = {
     collection.replaceOne(
       filter = byID(id),
       replacement = book,
       options = new ReplaceOptions().upsert(true) //What happens when we set this to false?
     ).headOption() map {
       case Some(data) => Right(data)
-      case None => Left(NO_CONTENT)
-      case _ => Left(NOT_FOUND)
+      case None       => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to retrieve book with id: $id"))
+      case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error updating book"))
     }
   }
 
-  def delete(id: String): Future[Either[Int, result.DeleteResult]] =
+  def delete(id: String): Future[Either[APIError.BadAPIResponse, result.DeleteResult]] =
     collection.deleteOne(
       filter = byID(id)
     ).headOption() map {
-      case Some(data) if data.getDeletedCount > 0 => Right(data)
-      case Some(data) if data.getDeletedCount == 0 => Left(NO_CONTENT)
-      case _ => Left(NOT_FOUND)
+      case Some(data) if data.getDeletedCount > 0   => Right(data)
+      case Some(data) if data.getDeletedCount == 0  => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to retrieve book with id: $id"))
+      case _ => Left(APIError.BadAPIResponse(NOT_FOUND, "Error deleting book"))
     }
 
   def deleteAll(): Future[Unit] = collection.deleteMany(empty()).toFuture().map(_ => ()) //Hint: needed for tests

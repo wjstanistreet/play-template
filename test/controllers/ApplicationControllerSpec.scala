@@ -1,7 +1,7 @@
 package controllers
 
 import baseSpec.BaseSpecWithApplication
-import models.DataModel
+import models.{APIError, DataModel}
 import play.api.http.HttpEntity.Strict
 import play.api.test.FakeRequest
 import play.api.http.Status
@@ -155,6 +155,42 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       val deleteResult: Future[Result] = TestApplicationController.delete("wxyz")(FakeRequest())
 
       status(deleteResult) shouldBe Status.NO_CONTENT
+      afterEach()
+    }
+  }
+
+  "ApplicationController .readByField()" should {
+
+    "retrieve an entry by name" in {
+      beforeEach()
+      createBook()
+
+      val readByFieldResult: Future[Result] = TestApplicationController.readByField("name", "TEST Name")(FakeRequest())
+
+      status(readByFieldResult) shouldBe Status.OK
+      contentAsJson(readByFieldResult).as[JsValue] shouldBe Json.toJson(dataModel)
+      afterEach()
+    }
+
+    "return no content if field is unrecognised" in {
+      beforeEach()
+      createBook()
+
+      val readByFieldResult: Future[Result] = TestApplicationController.readByField("test", "TEST Name")(FakeRequest())
+
+      status(readByFieldResult) shouldBe Status.NO_CONTENT
+      contentAsString(readByFieldResult) shouldBe "Unable to retrieve book with field: test and term: test name"
+      afterEach()
+    }
+
+    "return no content if searched term is unrecognised" in {
+      beforeEach()
+      createBook()
+
+      val readByFieldResult: Future[Result] = TestApplicationController.readByField("name", "name")(FakeRequest())
+
+      status(readByFieldResult) shouldBe Status.NO_CONTENT
+      contentAsString(readByFieldResult) shouldBe "Unable to retrieve book with field: name and term: name"
       afterEach()
     }
   }

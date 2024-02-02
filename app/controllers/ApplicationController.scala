@@ -21,8 +21,8 @@ class ApplicationController @Inject()(
 
   def index(): Action[AnyContent] = Action.async { implicit request =>
     dataRepository.index().map {
-      case Right(item: Seq[DataModel]) => Ok(Json.toJson(item))
-      case Left(error) => Status(error.upstreamStatus)(Json.toJson(error.upstreamMessage))
+      case Right(item: Seq[DataModel])  => Ok(Json.toJson(item))
+      case Left(error)                  => Status(error.upstreamStatus)(Json.toJson(error.upstreamMessage))
     }
   }
   // TODO creates a default page that allows the app to continue to run without needing to implement every page
@@ -36,8 +36,8 @@ class ApplicationController @Inject()(
       // if it's successful, call the repository service layer
       case JsSuccess(dataModel, _) =>
         dataRepository.create(dataModel).map {
-          case Right(_) => Created
-          case Left(error) => Status(error)
+          case Right(_)    => Created
+          case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
         }
       case JsError(_) => Future(BadRequest) // if the validation is unsuccessful, send a bad request to the client
     }
@@ -46,8 +46,16 @@ class ApplicationController @Inject()(
     // retrieves the data by calling .read and maps the Future to a Result, in this case Ok{json data}
     dataRepository.read(id).map {
       case Right(data) => Ok(Json.toJson(data))
-      case Left(error) => Status(error)
+      case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
     }
+  }
+
+  def readByField(fieldName: String, term: String): Action[AnyContent] = Action.async { implicit request =>
+    dataRepository.readByField(fieldName, term.toLowerCase).map {
+      case Right(data) => Ok(Json.toJson(data))
+      case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
+    }
+
   }
 
   // similar to .create(): parse request, validate json body, then call repository service
@@ -55,15 +63,16 @@ class ApplicationController @Inject()(
     request.body.validate[DataModel] match {
       case JsSuccess(dataModel, _) =>
         dataRepository.update(id, dataModel).map {
-          case Right(_) => Accepted(Json.toJson(dataModel))
-          case Left(_) => NotFound}
+          case Right(_)    => Accepted(Json.toJson(dataModel))
+          case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
+        }
       case JsError(_) => Future(BadRequest)
     }
   }
   def delete(id: String): Action[AnyContent] = Action.async { implicit request =>
     dataRepository.delete(id) map {
-      case Right(_) => Accepted
-      case Left(error) => Status(error)
+      case Right(_)    => Accepted
+      case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
     }
   }
 
