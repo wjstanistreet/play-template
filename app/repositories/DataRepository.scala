@@ -2,7 +2,7 @@ package repositories
 
 import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
-import org.mongodb.scala.model.Filters.empty
+import org.mongodb.scala.model.Filters.{empty, equal}
 import org.mongodb.scala.model._
 import org.mongodb.scala.{SingleObservable, result}
 import play.api.http.Status._
@@ -28,7 +28,7 @@ class DataRepository @Inject()(
   def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]]  =
     collection.find().toFuture() map {
       case books: Seq[DataModel]  => Right(books)
-      case _                      => Left(APIError.BadAPIResponse(404, "Books cannot be found"))
+      case _                      => Left(APIError.BadAPIResponse(NOT_FOUND, "Books cannot be found"))
     }
 
   def create(book: DataModel): Future[Either[APIError.BadAPIResponse, result.InsertOneResult]] =
@@ -70,6 +70,17 @@ class DataRepository @Inject()(
     ).headOption() map {
       case Some(data) => Right(data)
       case None       => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to retrieve book with id: $id"))
+      case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error updating book"))
+    }
+  }
+
+  def updateField(id: String, fieldName: String, change: String): Future[Either[APIError.BadAPIResponse, result.UpdateResult]] = {
+    collection.updateOne(
+      byID(id),
+      Updates.set(fieldName, change)
+    ).headOption() map {
+      case Some(data) if data.getModifiedCount > 0  => Right(data)
+      case Some(data) if data.getModifiedCount == 0 => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to update book with field: $fieldName and term: $change"))
       case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error updating book"))
     }
   }

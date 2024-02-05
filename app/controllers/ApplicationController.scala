@@ -69,6 +69,14 @@ class ApplicationController @Inject()(
       case JsError(_) => Future(BadRequest)
     }
   }
+
+  def updateField(id: String, fieldName: String, change: String): Action[AnyContent] = Action.async { implicit request =>
+    dataRepository.updateField(id, fieldName, change).map {
+      case Right(_) => Accepted
+      case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
+    }
+  }
+
   def delete(id: String): Action[AnyContent] = Action.async { implicit request =>
     dataRepository.delete(id) map {
       case Right(_)    => Accepted

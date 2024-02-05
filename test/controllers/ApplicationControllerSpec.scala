@@ -27,6 +27,13 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
     100
   )
 
+  private val newNameDataModel: DataModel = DataModel(
+    "abcd",
+    "a new name",
+    "test description",
+    100
+  )
+
   private val updatedDataModel: DataModel = DataModel(
     "abcd",
     "edited test name",
@@ -191,6 +198,45 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
       status(readByFieldResult) shouldBe Status.NO_CONTENT
       contentAsString(readByFieldResult) shouldBe "Unable to retrieve book with field: name and term: name"
+      afterEach()
+    }
+  }
+
+  "ApplicationController .updateField()" should {
+
+    "retrieve an entry by name" in {
+      beforeEach()
+      createBook()
+
+      val updatedFieldResult: Result = await(TestApplicationController.updateField("abcd", "name", "a new name")(FakeRequest()))
+
+      val readResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
+
+      updatedFieldResult.header.status shouldBe Status.ACCEPTED
+      status(readResult) shouldBe Status.OK
+      contentAsJson(readResult).as[JsValue] shouldBe Json.toJson(newNameDataModel)
+      afterEach()
+    }
+
+    "return no content if field is unrecognised" in {
+      beforeEach()
+      createBook()
+
+      val updateFieldResult: Future[Result] = TestApplicationController.updateField("abcd", "test", "TEST Name")(FakeRequest())
+
+      status(updateFieldResult) shouldBe Status.NO_CONTENT
+      contentAsString(updateFieldResult) shouldBe "Unable to retrieve book with field: test and term: test name"
+      afterEach()
+    }
+
+    "return no content if ID not found" in {
+      beforeEach()
+      createBook()
+
+      val updateFieldResult: Future[Result] = TestApplicationController.updateField("newID", "name", "new name")(FakeRequest())
+
+      status(updateFieldResult) shouldBe Status.NO_CONTENT
+      contentAsString(updateFieldResult) shouldBe "Unable to update book with field: name and term: name"
       afterEach()
     }
   }
