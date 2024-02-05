@@ -63,7 +63,7 @@ class ApplicationController @Inject()(
     request.body.validate[DataModel] match {
       case JsSuccess(dataModel, _) =>
         dataRepository.update(id, dataModel).map {
-          case Right(_)    => Accepted(Json.toJson(dataModel))
+          case Right(_)    => Accepted
           case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
         }
       case JsError(_) => Future(BadRequest)
@@ -71,10 +71,10 @@ class ApplicationController @Inject()(
   }
 
   def updateField(id: String, fieldName: String, change: String): Action[AnyContent] = Action.async { implicit request =>
-    dataRepository.updateField(id, fieldName, change).map {
-      case Right(_) => Accepted
-      case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
-    }
+     dataRepository.updateField(id, fieldName, change).map {
+       case Right(_) => Accepted
+       case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
+     }
   }
 
   def delete(id: String): Action[AnyContent] = Action.async { implicit request =>

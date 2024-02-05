@@ -6,6 +6,7 @@ import org.mongodb.scala.model.Filters.{empty, equal}
 import org.mongodb.scala.model._
 import org.mongodb.scala.{SingleObservable, result}
 import play.api.http.Status._
+import play.api.libs.json.Json
 import uk.gov.hmrc.mongo.MongoComponent
 import uk.gov.hmrc.mongo.play.json.PlayMongoRepository
 
@@ -75,13 +76,16 @@ class DataRepository @Inject()(
   }
 
   def updateField(id: String, fieldName: String, change: String): Future[Either[APIError.BadAPIResponse, result.UpdateResult]] = {
+    if (!DataModel.fields.contains(fieldName))  return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, s"Field, $fieldName, not contained in object $id")))
+    if (fieldName.equals("_id")) return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, "You can't update the object's ID")))
+
     collection.updateOne(
       byID(id),
-      Updates.set(fieldName, change)
+      Updates.set(fieldName, change),
     ).headOption() map {
       case Some(data) if data.getModifiedCount > 0  => Right(data)
-      case Some(data) if data.getModifiedCount == 0 => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to update book with field: $fieldName and term: $change"))
-      case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error updating book"))
+      case Some(data) if data.getMatchedCount == 0  => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to find book with id: $id"))
+      case _                                        => Left(APIError.BadAPIResponse(NOT_FOUND, "Error updating book"))
     }
   }
 
@@ -91,7 +95,7 @@ class DataRepository @Inject()(
     ).headOption() map {
       case Some(data) if data.getDeletedCount > 0   => Right(data)
       case Some(data) if data.getDeletedCount == 0  => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to retrieve book with id: $id"))
-      case _ => Left(APIError.BadAPIResponse(NOT_FOUND, "Error deleting book"))
+      case _                                        => Left(APIError.BadAPIResponse(NOT_FOUND, "Error deleting book"))
     }
 
   def deleteAll(): Future[Unit] = collection.deleteMany(empty()).toFuture().map(_ => ()) //Hint: needed for tests

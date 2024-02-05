@@ -109,10 +109,12 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       createBook()
 
       val updateRequest: FakeRequest[JsValue] = buildPost("/api/${dataModel._id}").withBody[JsValue](Json.toJson(updatedDataModel))
-      val updatedResult: Future[Result] = TestApplicationController.update("abcd")(updateRequest)
+      val updatedResult: Result = await(TestApplicationController.update("abcd")(updateRequest))
 
-      status(updatedResult) shouldBe Status.ACCEPTED
-      contentAsJson(updatedResult).as[JsValue] shouldBe Json.toJson(updatedDataModel)
+      val readUpdatedResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
+
+      updatedResult.header.status shouldBe Status.ACCEPTED
+      contentAsJson(readUpdatedResult).as[JsValue] shouldBe Json.toJson(updatedDataModel)
       afterEach()
     }
 
@@ -148,11 +150,11 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
       createBook()
 
       val readPreDeletion: Result = await(TestApplicationController.read("abcd")(FakeRequest()))
-      val deleteResult: Future[Result] = TestApplicationController.delete("abcd")(FakeRequest())
+      val deleteResult: Result = await(TestApplicationController.delete("abcd")(FakeRequest()))
       val readPostDeletion: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
 
       readPreDeletion.header.status shouldBe Status.OK
-      status(deleteResult) shouldBe Status.ACCEPTED
+      deleteResult.header.status shouldBe Status.ACCEPTED
       status(readPostDeletion) shouldBe Status.NO_CONTENT
       afterEach()
     }
@@ -210,33 +212,44 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
       val updatedFieldResult: Result = await(TestApplicationController.updateField("abcd", "name", "a new name")(FakeRequest()))
 
-      val readResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
+      val readUpdatedResult: Future[Result] = TestApplicationController.read("abcd")(FakeRequest())
 
       updatedFieldResult.header.status shouldBe Status.ACCEPTED
-      status(readResult) shouldBe Status.OK
-      contentAsJson(readResult).as[JsValue] shouldBe Json.toJson(newNameDataModel)
+      status(readUpdatedResult) shouldBe Status.OK
+      contentAsJson(readUpdatedResult).as[JsValue] shouldBe Json.toJson(newNameDataModel)
       afterEach()
     }
 
-    "return no content if field is unrecognised" in {
+    "return bad request if field is unrecognised" in {
       beforeEach()
       createBook()
 
-      val updateFieldResult: Future[Result] = TestApplicationController.updateField("abcd", "test", "TEST Name")(FakeRequest())
+      val updateFieldResult: Future[Result] = TestApplicationController.updateField("abcd", "this is not a field", "another change")(FakeRequest())
 
-      status(updateFieldResult) shouldBe Status.NO_CONTENT
-      contentAsString(updateFieldResult) shouldBe "Unable to retrieve book with field: test and term: test name"
+      status(updateFieldResult) shouldBe Status.BAD_REQUEST
+      contentAsString(updateFieldResult) shouldBe "Field, this is not a field, not contained in object abcd"
       afterEach()
     }
 
-    "return no content if ID not found" in {
+    "return bad request if _id is the field name to change" in {
       beforeEach()
       createBook()
 
-      val updateFieldResult: Future[Result] = TestApplicationController.updateField("newID", "name", "new name")(FakeRequest())
+      val updateFieldResult: Future[Result] = TestApplicationController.updateField("noID", "_id", "x")(FakeRequest())
+
+      status(updateFieldResult) shouldBe Status.BAD_REQUEST
+      contentAsString(updateFieldResult) shouldBe "You can't update the object's ID"
+      afterEach()
+    }
+
+    "return no content if the _id is not found" in {
+      beforeEach()
+      createBook()
+
+      val updateFieldResult: Future[Result] = TestApplicationController.updateField("lmno", "name", "x")(FakeRequest())
 
       status(updateFieldResult) shouldBe Status.NO_CONTENT
-      contentAsString(updateFieldResult) shouldBe "Unable to update book with field: name and term: name"
+      contentAsString(updateFieldResult) shouldBe "Unable to find book with id: lmno"
       afterEach()
     }
   }
