@@ -2,11 +2,10 @@ package repositories
 
 import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
-import org.mongodb.scala.model.Filters.{empty, equal}
+import org.mongodb.scala.model.Filters.empty
 import org.mongodb.scala.model._
-import org.mongodb.scala.{SingleObservable, result}
+import org.mongodb.scala.result
 import play.api.http.Status._
-import play.api.libs.json.Json
 import uk.gov.hmrc.mongo.MongoComponent
 import uk.gov.hmrc.mongo.play.json.PlayMongoRepository
 
@@ -26,7 +25,7 @@ class DataRepository @Inject()(
   replaceIndexes = false
 ) {
 
-  def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]]  =
+  def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]] =
     collection.find().toFuture() map {
       case books: Seq[DataModel]  => Right(books)
       case _                      => Left(APIError.BadAPIResponse(NOT_FOUND, "Books cannot be found"))
@@ -76,9 +75,6 @@ class DataRepository @Inject()(
   }
 
   def updateField(id: String, fieldName: String, change: String): Future[Either[APIError.BadAPIResponse, result.UpdateResult]] = {
-    if (!DataModel.fields.contains(fieldName))  return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, s"Field, $fieldName, not contained in object $id")))
-    if (fieldName.equals("_id")) return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, "You can't update the object's ID")))
-
     collection.updateOne(
       byID(id),
       Updates.set(fieldName, change),
