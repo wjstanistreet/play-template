@@ -1,9 +1,9 @@
 package services
 
+import cats.data.EitherT
 import models.{APIError, DataModel}
 import play.api.libs.json.{JsValue, Json}
-import play.api.mvc.Results.{Ok, Status}
-import repositories.DataRepository
+import repositories.DataRepositoryTrait
 import org.mongodb.scala.result
 import play.api.http.Status.{BAD_REQUEST, NOT_FOUND, NO_CONTENT}
 
@@ -12,8 +12,9 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class RepositoryService @Inject()(
-                                   dataRepository: DataRepository,
-                                  implicit val ec: ExecutionContext) {
+                                   dataRepository: DataRepositoryTrait,
+                                   implicit val ec: ExecutionContext
+                                 ) {
 
   def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]] = {
     dataRepository.index() map {
@@ -29,16 +30,18 @@ class RepositoryService @Inject()(
     }
   }
 
-  def read(id: String): Future[Either[APIError.BadAPIResponse, JsValue]] = {
+  def read(id: String): Future[Either[APIError.BadAPIResponse, DataModel]] = {
     dataRepository.read(id).map {
-      case Right(data) => Right(Json.toJson(data))
+      case Right(data) => Right(data)
       case Left(error) => Left(error)
     }
   }
 
-  def readByField(fieldName: String, term: String): Future[Either[APIError.BadAPIResponse, JsValue]] = {
+  def readByField(fieldName: String, term: String): Future[Either[APIError.BadAPIResponse, DataModel]] = {
+    if (!DataModel.fields.contains(fieldName)) return Future(Left(APIError.BadAPIResponse(BAD_REQUEST, s"Field, $fieldName, not contained in DataModel")))
+
     dataRepository.readByField(fieldName, term) map {
-      case Right(data) => Right(Json.toJson(data))
+      case Right(data) => Right(data)
       case Left(error) => Left(error)
     }
   }
@@ -51,8 +54,8 @@ class RepositoryService @Inject()(
   }
 
   def updateField(id: String, fieldName: String, change: String): Future[Either[APIError.BadAPIResponse, result.UpdateResult]] = {
-    if (!DataModel.fields.contains(fieldName)) return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, s"Field, $fieldName, not contained in object $id")))
-    if (fieldName.equals("_id")) return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, "You can't update the object's ID")))
+    if (!DataModel.fields.contains(fieldName))  return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, s"Field, $fieldName, not contained in object $id")))
+    if (fieldName.equals("_id"))                return Future.successful(Left(APIError.BadAPIResponse(BAD_REQUEST, "You can't update the object's ID")))
 
     dataRepository.updateField(id, fieldName, change) map {
       case Right(data) => Right(data)

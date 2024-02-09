@@ -188,8 +188,8 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
       val readByFieldResult: Future[Result] = TestApplicationController.readByField("test", "TEST Name")(FakeRequest())
 
-      status(readByFieldResult) shouldBe Status.NO_CONTENT
-      contentAsString(readByFieldResult) shouldBe "Unable to retrieve book with field: test and term: test name"
+      status(readByFieldResult) shouldBe Status.BAD_REQUEST
+      contentAsString(readByFieldResult) shouldBe "Field, test, not contained in DataModel"
       afterEach()
     }
 

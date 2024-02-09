@@ -1,5 +1,6 @@
 package repositories
 
+import com.google.inject.ImplementedBy
 import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
 import org.mongodb.scala.model.Filters.empty
@@ -13,22 +14,21 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class DataRepository @Inject()(
-                                mongoComponent: MongoComponent
-                              )(implicit ec: ExecutionContext) extends PlayMongoRepository[DataModel](
-  collectionName = "dataModels",
-  mongoComponent = mongoComponent,
-  domainFormat = DataModel.formats,
-  indexes = Seq(IndexModel(
-    Indexes.ascending("_id")
-  )),
-  replaceIndexes = false
-) {
+class DataRepository @Inject()(mongoComponent: MongoComponent)(implicit ec: ExecutionContext)
+  extends PlayMongoRepository[DataModel](
+    collectionName = "dataModels",
+    mongoComponent = mongoComponent,
+    domainFormat = DataModel.formats,
+    indexes = Seq(IndexModel(
+      Indexes.ascending("_id")
+    )),
+    replaceIndexes = false
+) with DataRepositoryTrait {
 
   def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]] =
-    collection.find().toFuture() map {
-      case books: Seq[DataModel]  => Right(books)
-      case _                      => Left(APIError.BadAPIResponse(NOT_FOUND, "Books cannot be found"))
+    collection.find().toFuture().map {
+      case data: Seq[DataModel] => Right(data)
+      case _ => Left(APIError.BadAPIResponse(NOT_FOUND, "Error reading books"))
     }
 
   def create(book: DataModel): Future[Either[APIError.BadAPIResponse, result.InsertOneResult]] =
@@ -55,12 +55,15 @@ class DataRepository @Inject()(
       Filters.equal(fieldName, term)
     )
 
-  def readByField(fieldName: String, term: String): Future[Either[APIError.BadAPIResponse, DataModel]] =
+  def readByField(fieldName: String, term: String): Future[Either[APIError.BadAPIResponse, DataModel]] = {
+    if (!DataModel.fields.contains(fieldName)) return Future(Left(APIError.BadAPIResponse(BAD_REQUEST, s"Field, $fieldName, not contained in DataModel")))
+
     collection.find(byField(fieldName, term)).headOption() map {
       case Some(data) => Right(data)
       case None       => Left(APIError.BadAPIResponse(NO_CONTENT, s"Unable to retrieve book with field: $fieldName and term: $term"))
       case _          => Left(APIError.BadAPIResponse(NOT_FOUND, "Error reading book"))
     }
+  }
 
   def update(id: String, book: DataModel): Future[Either[APIError.BadAPIResponse, result.UpdateResult]] = {
     collection.replaceOne(
@@ -95,5 +98,21 @@ class DataRepository @Inject()(
     }
 
   def deleteAll(): Future[Unit] = collection.deleteMany(empty()).toFuture().map(_ => ()) //Hint: needed for tests
+}
 
+@ImplementedBy(classOf[DataRepository])
+trait DataRepositoryTrait {
+
+  def index(): Future[Either[APIError.BadAPIResponse, Seq[DataModel]]]
+
+  def create(book: DataModel): Future[Either[APIError.BadAPIResponse, result.InsertOneResult]]
+
+  def read(id: String): Future[Either[APIError.BadAPIResponse, DataModel]]
+  def readByField(fieldName: String, term: String): Future[Either[APIError.BadAPIResponse, DataModel]]
+
+  def update(id: String, book: DataModel): Future[Either[APIError.BadAPIResponse, result.UpdateResult]]
+  def updateField(id: String, fieldName: String, change: String): Future[Either[APIError.BadAPIResponse, result.UpdateResult]]
+
+  def delete(id: String): Future[Either[APIError.BadAPIResponse, result.DeleteResult]]
+  def deleteAll(): Future[Unit]
 }

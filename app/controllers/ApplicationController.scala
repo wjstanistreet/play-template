@@ -3,7 +3,7 @@ package controllers
 import models.{APIError, DataModel}
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents, Request, ResponseHeader, Results}
-import repositories.DataRepository
+import repositories.DataRepositoryTrait
 import services.{LibraryService, RepositoryService}
 
 import javax.inject.{Inject, Singleton}
@@ -13,7 +13,7 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton //@Inject()() annotation: Identifies injectable controllers/objects/methods
 class ApplicationController @Inject()(
                                        val controllerComponents: ControllerComponents,
-                                       val dataRepository: DataRepository,
+                                       val dataRepository: DataRepositoryTrait,
                                        val service: LibraryService,
                                        val repositoryService: RepositoryService,
                                        implicit val ec: ExecutionContext
@@ -22,8 +22,8 @@ class ApplicationController @Inject()(
 
   def index(): Action[AnyContent] = Action.async { implicit request =>
     repositoryService.index().map {
-      case Right(item: Seq[DataModel])  => Ok(Json.toJson(item))
-      case Left(error)                  => Status(error.upstreamStatus)(Json.toJson(error.upstreamMessage))
+      case Right(item)   => Ok(Json.toJson(item))
+      case Left(error)   => Status(error.upstreamStatus)(Json.toJson(error.upstreamMessage))
     }
   }
   // TODO creates a default page that allows the app to continue to run without needing to implement every page
@@ -46,7 +46,7 @@ class ApplicationController @Inject()(
   def read(id: String): Action[AnyContent] = Action.async { implicit request =>
     // retrieves the data by calling .read and maps the Future to a Result, in this case Ok{json data}
     repositoryService.read(id).map {
-      case Right(data) => Ok(data)
+      case Right(data) => Ok(Json.toJson(data))
       case Left(error) => Status(error.upstreamStatus)(error.upstreamMessage)
     }
   }
